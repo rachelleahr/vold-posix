@@ -132,8 +132,8 @@ print_modname() {
 on_install() {
   # The following is the default implementation: extract $ZIPFILE/system to $MODPATH
   # Extend/change the logic to whatever you want
-  if [ $API != 27 ]; then
-    abort "Only support Oreo 8.1"
+  if [ $API < 27 || $API >= 29 ]; then
+    abort "Only support Oreo 8 - 9"
   fi
   
   if [ ! -z $(getprop ro.miui.ui.version.name) ]; then
